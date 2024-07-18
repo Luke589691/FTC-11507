@@ -1,16 +1,17 @@
-package org.firstinspires.ftc.teamcode.examples.twowheelomni;
+package org.firstinspires.ftc.teamcode.opmodes.drivercontrolled;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@TeleOp (group = "TeleOp", name = "TwoWheelOmniDrive")
-public class TwoWheelOmniDrive extends OpMode {
+@TeleOp (group = "TeleOp", name = "Drive11507")
+public class Drive11507 extends OpMode {
     //define the motors, servos, sensors and so forth that you will use throughout your OpMode here
     // remember to import
     private DcMotor rightMotor;
     private DcMotor leftMotor;
+    private DcMotor armMotor;
 
     /**
      * this is where you should initialise all of your variables you just defined, this is what runs
@@ -20,8 +21,13 @@ public class TwoWheelOmniDrive extends OpMode {
     public void init() {
         this.leftMotor = hardwareMap.get(DcMotor.class, "leftMotor");
         this.rightMotor = hardwareMap.get(DcMotor.class, "rightMotor");
+        this.armMotor = hardwareMap.get(DcMotor.class, "armMotor");
+
         this.leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         this.rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+
+        this.armMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+
     }
 
     /**
@@ -42,6 +48,11 @@ public class TwoWheelOmniDrive extends OpMode {
 
         this.leftMotor.setPower(leftPower);
         this.rightMotor.setPower(rightPower);
+
+        int armMotorPower = gamepad1.right_bumper ? 1:0; // ternary operator (gamepad1.right_bumper is a boolean (true or false), this operator will turn it into a 1 if true and 0 if false)
+        armMotorPower += gamepad1.left_bumper ? -1:0;
+
+        this.armMotor.setPower(armMotorPower);
 
     }
 
