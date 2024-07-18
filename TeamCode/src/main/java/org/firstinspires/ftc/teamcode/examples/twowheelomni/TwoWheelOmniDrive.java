@@ -21,7 +21,7 @@ public class TwoWheelOmniDrive extends OpMode {
     public void init() {
         this.leftMotor = hardwareMap.get(DcMotor.class, "leftMotor");
         this.rightMotor = hardwareMap.get(DcMotor.class, "rightMotor");
-        this.leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        this.leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         this.rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
     }
 

@@ -20,7 +20,7 @@ public class ExampleUtility {
 
 
     /**
-     * this is a getter function. it allows an outside function to ge the value of a member variable
+     * this is a getter function. it allows an outside function to get the value of a member variable
      * without obtaining a reference to it. this prevents it from changing the value of the variable
      * without "asking" to.
      */
